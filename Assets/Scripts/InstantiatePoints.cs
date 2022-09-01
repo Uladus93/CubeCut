@@ -10,20 +10,20 @@ public class InstantiatePoints : MonoBehaviour
     {
 
 
-        for (int x = -15; x < 15;)
+        for (float x = -13.5f; x < 16.5;)
         {
-            for (int y = 0; y < 30; y++)
+            for (float y = 0.5f; y < 30.5;)
             {
-                for (int z = -15; z < 15; z++)
+                for (float z = -13.5f; z < 16.5;)
                 {
                     Instantiate(sphere, new Vector3(x, y, z), Quaternion.identity);
-                    z += 2;
+                    z += 3;
                 }
 
-                y += 2;
+                y += 3;
             }
 
-            x += 2;
+            x += 3;
         }
     }
 
