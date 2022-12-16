@@ -5,7 +5,7 @@ Shader "Custom/GlassPro"
         _Color ("Color", Color) = (1,1,1,1)
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _Cutoff ("Alpha Cutoff", Range(0,1)) = 0.5
-        [KeywordEnum(FRONT, BACK, RIGHT, LEFT, TOP, BOTTOM)] _FACES ("Faces", Float) = 0
+        [KeywordEnum(FRONT, RIGHT, TOP)] _FACES ("Faces", Float) = 0
     }
     SubShader
     {
