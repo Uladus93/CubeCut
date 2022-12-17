@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
         if (TimeLess._timeDown <= 0)
         {
             _score.fontSize = 12;
-            _score.text = "Your result is equal: " + _point.ToString();
+            _score.text = "Your result equal: " + _point.ToString();
         }
     }
 }

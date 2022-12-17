@@ -9,7 +9,7 @@ public class GeneratePlayer : MonoBehaviour
     private Mesh _mesh;
     void Start()
     {
-        Generate();
+        Generate(); //ABSTRACTION
     }
 
     private void Generate()

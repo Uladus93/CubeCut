@@ -272,10 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e552e88fae5bfb24aaa67ff265e0e1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limit: 11
   _speed: 2
   _timeLimit: 0.1
   _enemy: {fileID: 4871883236382808630, guid: f4d6ede07c3acf34fbfc3fb3854a0138, type: 3}
+  _boss: {fileID: 0}
 --- !u!54 &61529391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -500,6 +500,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4871883236382808620, guid: f4d6ede07c3acf34fbfc3fb3854a0138, type: 3}
+      propertyPath: _speed
+      value: 50.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4871883236382808621, guid: f4d6ede07c3acf34fbfc3fb3854a0138, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -975,7 +979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stopWatch: {fileID: 1191537435}
-  timeDown: 17.16
+  _player: {fileID: 0}
 --- !u!114 &1191537435
 MonoBehaviour:
   m_ObjectHideFlags: 0

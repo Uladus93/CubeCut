@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _timeLimit;
     float _time;
     [SerializeField] private GameObject _enemy;
+    [SerializeField] private GameObject _boss;
     private float _rndX;
     private float _rndY;
     private float _rndZ;
@@ -105,7 +106,15 @@ public class PlayerController : MonoBehaviour
             _rndX = transform.position.x < 5 ? 10 : 0;
             _rndY = transform.position.y < 5 ? 10 : 0;
             _rndZ = transform.position.z < 5 ? 10 : 0;
-            Instantiate(_enemy, new Vector3(_rndX, _rndY, _rndZ), Quaternion.identity);
+            if (TimeLess._timeDown <= 10.5f)
+            {
+                Instantiate(_boss, new Vector3(_rndX, _rndY, _rndZ), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(_enemy, new Vector3(_rndX, _rndY, _rndZ), Quaternion.identity);
+            }
+            
         }
     }
 }

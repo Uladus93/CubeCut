@@ -5,57 +5,98 @@ using UnityEngine;
 public class EnemyMoving : MonoBehaviour
 {
     [Range(0, 100)]
-    [SerializeField] private float _speed;
+    private float _speed;
+    public float speed // ENCAPSULATION
+    {
+        get { return _speed; }
+        set
+        {
+            if (speed < 0)
+            {
+                _speed = 0;
+            }
+            else if (speed >= 100)
+            {
+                _speed = 100;
+            }
+            else
+            {
+                _speed = value;
+            }
+        }
+    }
     [Range(0, 10)]
-    [SerializeField] private float _limit;
-    
+    private float _limit = 10;
+    public float limit // ENCAPSULATION
+    {
+        get { return _limit; }
+        set
+        {
+            if (limit < 0)
+            {
+                _limit = 0;
+            }
+            else if (limit >= 30)
+            {
+                _limit = 30;
+            }
+            else
+            {
+                _limit = value;
+            }
+        }
+    }
+
+
+
     private float _direction;
-    private float time;
-    float randX;
-    float randY;
-    float randZ;
+    private float _time;
+    float _randX;
+    float _randY;
+    float _randZ;
     private Vector3 _dir;
 
 
     void Update()
     {
-        time += Time.deltaTime;
+        _time += Time.deltaTime;
         Broad();
         Moving();
     }
 
     private void Moving()
     {
+        speed = 50;
         _direction = 0.1f;
         if (transform.position.x >= 6)
         {
-            randX = Random.Range(-_direction, 0);
+            _randX = Random.Range(-_direction, 0);
         }
         else if (transform.position.x <= 4)
         {
-            randX = Random.Range(0, _direction);
+            _randX = Random.Range(0, _direction);
         }
         if (transform.position.y >= 6)
         {
-            randY = Random.Range(-_direction, 0);
+            _randY = Random.Range(-_direction, 0);
         }
         else if (transform.position.y <= 4)
         {
-            randY = Random.Range(0, _direction);
+            _randY = Random.Range(0, _direction);
         }
         if (transform.position.z >= 6)
         {
-            randZ = Random.Range(-_direction, 0);
+            _randZ = Random.Range(-_direction, 0);
         }
         else if (transform.position.z <= 4)
         {
-            randZ = Random.Range(0, _direction);
+            _randZ = Random.Range(0, _direction);
         }
         
-        if (time >= 0.5)
+        if (_time >= 0.5)
         {
-            _dir = new Vector3(randX, randY, randZ);
-            time = 0;
+            _dir = new Vector3(_randX, _randY, _randZ);
+            _time = 0;
         }
         transform.Translate(_dir * _speed * Time.deltaTime);
     }

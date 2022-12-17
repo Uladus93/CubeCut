@@ -7,12 +7,13 @@ public class GenerateEnemy : MonoBehaviour
 {
     private Vector3[] _vertices;
     private Mesh _mesh;
+
     void Start()
     {
         Generate();
     }
 
-    private void Generate()
+    public void Generate()
     {
         _mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = _mesh;
@@ -24,7 +25,7 @@ public class GenerateEnemy : MonoBehaviour
         GetComponent<MeshCollider>().sharedMesh = _mesh;
     }
 
-    private void SetVertices()
+    public void SetVertices()
     {
         _vertices = new Vector3[8];
         _vertices[0] = new Vector3(0, 0, 0);
@@ -38,7 +39,7 @@ public class GenerateEnemy : MonoBehaviour
         _mesh.vertices = _vertices;
     }
 
-    private void SetTriangles()
+    public void SetTriangles()
     {
         var trianglesFront = new int[6] { 1, 5, 3, 3, 5, 7 };
         var trianglesBack = new int[6] { 0, 2, 4, 4, 2, 6 };

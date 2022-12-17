@@ -10,6 +10,7 @@ public class GenerateCubeFromVoxels : MonoBehaviour
     [SerializeField] private int _sizeZ;
     private VoxelsType[,,] _voxels;
     private Vector3[] _vertices;
+    int count = 0;
     private List<int> _triangles = new List<int>();
     private Mesh _mesh;
     void Start()
@@ -18,16 +19,16 @@ public class GenerateCubeFromVoxels : MonoBehaviour
         _mesh.name = "Cube";
         _vertices = new Vector3[(_sizeX + 1) * (_sizeY + 1) * (_sizeZ + 1)];
         _voxels = new VoxelsType [_sizeX, _sizeY, _sizeZ];
-        GenerateVertices();
+        TrippleFor(_vertices);// POLYMORPHISM
         _mesh.vertices = _vertices;
-        GenerateVoxels();
+        TrippleFor(_voxels);// POLYMORPHISM
         GenerateMesh();
     }
 
     private void GenerateMesh()
     {
         _triangles.Clear();
-        GenerateSides();
+        TrippleFor();// POLYMORPHISM
         _mesh.vertices = _vertices;
         _mesh.triangles = _triangles.ToArray();
         _mesh.Optimize();
@@ -36,22 +37,23 @@ public class GenerateCubeFromVoxels : MonoBehaviour
         GetComponent<MeshFilter>().mesh = _mesh;
         GetComponent<MeshCollider>().sharedMesh = _mesh;
     }
-    private void GenerateVertices()
+
+    // POLYMORPHISM
+    private void TrippleFor(Vector3[] vert)
     {
-        int count = 0;
         for (int x = 0; x <= _sizeX; x++)
         {
             for (int y = 0; y <= _sizeY; y++)
             {
                 for (int z = 0; z <= _sizeZ; z++)
                 {
-                    _vertices[count++] = new Vector3(x, y, z);
+                    vert[count++] = new Vector3(x, y, z);
                 }
             }
         }
     }
 
-    private void GenerateSides()
+    private void TrippleFor()
     {
         for (int x = 0; x <= _sizeX; x++)
         {
@@ -67,7 +69,7 @@ public class GenerateCubeFromVoxels : MonoBehaviour
             }
         }
     } 
-    private void GenerateVoxels()
+    private void TrippleFor(VoxelsType[,,] vox)
     {
         for (int x = 0; x <= _sizeX; x++)
         {
@@ -77,7 +79,7 @@ public class GenerateCubeFromVoxels : MonoBehaviour
                 {
                     if (x < _sizeX && y < _sizeY && z < _sizeZ)
                     {
-                        _voxels[x, y, z] = VoxelsType.Voxel;
+                        vox[x, y, z] = VoxelsType.Voxel;
                     }
                 }
             }

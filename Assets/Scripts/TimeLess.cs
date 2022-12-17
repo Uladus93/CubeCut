@@ -32,6 +32,10 @@ public class TimeLess : MonoBehaviour
             {
                 _stopWatch.color = Color.red;
             }
+            else
+            {
+                _stopWatch.color = Color.black;
+            }
         }
         else
         {
